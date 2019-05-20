@@ -1,0 +1,24 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka
+spring:
+  application:
+    name: gateway
+server:
+  port: 8073
+zuul:
+  prefix: /demo
+  routes:
+    service1:
+      path: /service1/**
+      serviceId: service1
+    service2:
+      path: /service2/**
+      serviceId: service2
+ribbon:
+  eureka:
+    enabled: false
+service1:
+  ribbon:
+    listOfServers: localhost:8800
